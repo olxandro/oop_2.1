@@ -1,9 +1,12 @@
+import java.time.LocalDate;
+import java.util.Locale;
+
 public class Human {
     static final String def = "'Информация не указана'";
     String name;
-    String town;
+    private String town;
 
-    int yearOfBurth;
+    private Integer yearOfBurth;
     String job;
 
     Human() {
@@ -16,31 +19,63 @@ public class Human {
         this.job = def;
     }
 
-    Human(String name, String town, int yearOfBurth, String job) {
-        if (name == null) {
-            this.name = def;
-        } else {
-            this.name = name;
-        }
-        if (town == null) {
-            this.town = def;
-        } else {
-            this.town = name;
-        }
-        if (yearOfBurth >= 0) {
-            this.yearOfBurth = yearOfBurth;
-        } else {
-            this.yearOfBurth = 0;
-        }
-        if (job == null) {
-            this.job = def;
-        } else {
-            this.job = job;
-        }
+    Human(String name, String town, Integer yearOfBurth, String job) {
+        this.setName(name);
+        this.setTown(town);
+        this.setYearOfBurth(yearOfBurth);
+        this.setJob(job);
     }
 
     public void Welcome() {
         System.out.println("Привет! Меня зовут " + name + ". Я из города " + town + ". Я родился в "
                 + yearOfBurth + " году. Я работаю на должности " + job + ". Будем знакомы!");
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        if (name == null) {
+            this.name = def;
+        } else {
+            this.name = name;
+        }
+    }
+
+    public String getTown() {
+        return town;
+    }
+
+    public void setTown(String town) {
+        if (town == null || town.isBlank()) {
+            this.town = def;
+        } else {
+            this.town = town.trim();
+        }
+    }
+
+    public Integer getYearOfBurth() {
+        return yearOfBurth;
+    }
+
+    public void setYearOfBurth(Integer yearOfBurth) {
+        if (yearOfBurth >= 0 || yearOfBurth == null) {
+            this.yearOfBurth = yearOfBurth;
+        } else {
+            this.yearOfBurth = Math.abs(yearOfBurth);
+        }
+    }
+
+    public String getJob() {
+        return job;
+    }
+
+    public void setJob(String job) {
+        if (job == null) {
+            this.job = def;
+        } else {
+            this.job = job;
+        }
     }
 }

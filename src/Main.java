@@ -4,91 +4,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Cat murzic = new Cat("Мурзик");
-        murzic.age = 3;
-        murzic.meow();
-
-        Cat begemot = new Cat("Бегемот", -5);
-        begemot.meow();
-
-        Human human = new Human();
-        human.name = "Максим";
-        human.town = "Минск";
-        human.yearOfBurth = 1987;
-        human.job = "бренд-менеджер";
-
-        Human human1 = new Human();
-        human1.name = "Аня";
-        human1.town = "Москва";
-        human1.yearOfBurth = 1993;
-        human1.job = "методист образовательных программ";
-
-        Human human2 = new Human();
-        human2.name = "Катя";
-        human2.town = "Калинанград";
-        human2.yearOfBurth = 1994;
-        human2.job = "продакт-менеджер";
-
-        Human human3 = new Human();
-        human3.name = "Артем";
-        human3.town = "Москва";
-        human3.yearOfBurth = 1995;
-        human3.job = "директор по развитию бизнеса";
-
-        human.Welcome();
-        human1.Welcome();
-        human2.Welcome();
-        human3.Welcome();
-
-        Car lada = new Car();
-        lada.brand = "Lada";
-        lada.model = "Grande";
-        lada.engineVolume = 1.7f;
-        lada.color = "yellow";
-        lada.productionYear = 2015;
-        lada.productionCountry = "Russia";
-
-        System.out.println();
-
-        Car audi = new Car();
-        audi.brand = "Audi";
-        audi.model = "A8 50 L TDI quattro";
-        audi.engineVolume = 3.0f;
-        audi.color = "black";
-        audi.productionYear = 2020;
-        audi.productionCountry = "Germany";
-
-        Car bmw = new Car();
-        bmw.brand = "BMW";
-        bmw.model = "Z8";
-        bmw.engineVolume = 3.0f;
-        bmw.color = "black";
-        bmw.productionYear = 2021;
-        bmw.productionCountry = "Germany";
-
-        Car kia = new Car();
-        kia.brand = "Kia";
-        kia.model = "Sportage 4 поколение";
-        kia.engineVolume = 3.0f;
-        kia.color = "red";
-        kia.productionYear = 2018;
-        kia.productionCountry = "South Korea";
-
-        Car hyundai = new Car();
-        hyundai.brand = "Hyundai";
-        hyundai.model = "Avante";
-        hyundai.engineVolume = 3.0f;
-        hyundai.color = "orange";
-        hyundai.productionYear = 2016;
-        hyundai.productionCountry = "South Korea";
-
-        lada.printInformation();
-        audi.printInformation();
-        bmw.printInformation();
-        kia.printInformation();
-        hyundai.printInformation();
-        System.out.println();
-
         Human max = new Human("Максим", "Минск", 1987, "бренд-менеджер");
         Human anya = new Human("Аня", "Москва", 1993, "методист образовательных программ");
         Human kate = new Human("Катя", "Калининград", 1994, "продакт-менеджер");
@@ -112,12 +27,43 @@ public class Main {
         hyundai1.printInformation();
         System.out.println();
 
-        System.out.println("У кота " + murzic.name + " " + murzic.friends.length + " друзей");
-        murzic.addFriend(begemot);
-        System.out.println("У кота " + murzic.name + " " + murzic.friends.length + " друзей");
-        murzic.friends[0].meow();
+        Human vlad = new Human("Vladimir", "Kazan", 25, " ");
+        vlad.Welcome();
+        System.out.println();
 
+        Flower[] bouquet = new Flower[10];
+        Flower rose = new Flower("Rose", "", "Goland", 35.59f, 0);
+        Flower chrysanthemum = new Flower("Chrysanthemum", "", "", 15.00f, 5);
+        Flower piony = new Flower("Piony", "", " ", 69.9f, 1);
+        Flower gypsophila = new Flower("Gypsophila", "", "Turkey", 19.5f, 10);
 
+        rose.infoFlower();
+
+        bouquet[0] = rose;
+        bouquet[1] = piony;
+        calculate(bouquet);
+
+    }
+
+    private static void calculate(Flower[] bouquet) {
+        int lifeSpan = Integer.MAX_VALUE;
+        double price = 0;
+        String text = "В букете есть:\n";
+        for (Flower flower : bouquet) {
+            if (flower != null) {
+                text += " " + flower.getName() + "\n";
+                if (flower.getLifeSpan() < lifeSpan) {
+                    lifeSpan = flower.getLifeSpan();
+                }
+                price += flower.getCost();
+            }
+        }
+        price *= 1.1;
+        text += "\n";
+        text += "Стоимость букета - " + String.format("%.2f", price);
+        text += "\n";
+        text += "Срок годности: " + lifeSpan;
+        System.out.println(text);
 
     }
 }
