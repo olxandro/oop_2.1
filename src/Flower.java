@@ -13,7 +13,7 @@ public class Flower {
         } else {
             this.flowerColor = flowerColor;
         }
-        if (country.isBlank() || country.isEmpty()) {
+        if (flowerColor == null || country.isBlank() || country.isEmpty()) {
             this.country = "Russia";
         } else {
             this.country = country;
@@ -56,10 +56,10 @@ public class Flower {
 
     public void infoFlower() {
         System.out.println( "Цветок: " + " " + "Название - " + name +
-                ", цвет - " + flowerColor + '\'' +
-                ", страна происхождения - " + country + '\'' +
+                ", цвет - " + flowerColor +
+                ", страна происхождения - " + country +
                 ", стоимость цветка - " + cost +
-                ", Срок стояния - " + lifeSpan +
-                '}');
+                "р., Срок стояния - " + lifeSpan +
+                " дней.");
     }
 }

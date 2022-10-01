@@ -60,7 +60,7 @@ public class Human {
     }
 
     public void setYearOfBurth(Integer yearOfBurth) {
-        if (yearOfBurth >= 0 || yearOfBurth == null) {
+        if (yearOfBurth == null || yearOfBurth >= 0) {
             this.yearOfBurth = yearOfBurth;
         } else {
             this.yearOfBurth = Math.abs(yearOfBurth);
