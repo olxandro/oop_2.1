@@ -14,11 +14,17 @@ public class Main {
         artem.Welcome();
         System.out.println();
 
-        Car lada1 = new Car("Lada", "Grande", 1.7f, "yellow", 2015, "Russia");
-        Car audi1 = new Car("Audi", "A8 50 L TDI quattro", 3.0f, "black", 2020, "Germany");
-        Car bmw1 = new Car("BMW", "Z8", 3.0f, "black", 2021, "Germany");
-        Car kia1 = new Car("Kia", "Sportage 4 поколение", 2.4f, "red", 2018, "South Korea");
-        Car hyundai1 = new Car("Hyundai", "Avante", 1.6f, "orange", 2016, "South Korea");
+
+        Car lada1 = new Car("Lada", "Grande", 1.7f, "yellow", 2015,
+                "Russia", "Mechanic", "sedan", "q233AH327", 5, true);
+        Car audi1 = new Car("Audi", "A8 50 L TDI quattro", 3.0f, "black", 2020,
+                "Germany", "Automat", "sedan", "H456DG294", 5, true);
+        Car bmw1 = new Car("BMW", "Z8", 3.0f, "black", 2021,
+                "Germany", "Mechanic", "liftback", "j234d64", 5, false);
+        Car kia1 = new Car("Kia", "Sportage 4 поколение", 2.4f, "red", 2018,
+                "South Korea", "Automat", "minivan", "d283jf234", 7, true);
+        Car hyundai1 = new Car("Hyundai", "Avante", 1.6f, "orange", 2016,
+                "South Korea", "Automat", "sedan", "j234kj861", 5, false);
 
         lada1.printInformation();
         audi1.printInformation();

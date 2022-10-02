@@ -1,5 +1,6 @@
 package transport;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Car {
@@ -15,17 +16,57 @@ public class Car {
     private String numberRegistration;
     private Integer placesCount;
     private Boolean winterTires;
+    private Key key;
 
-    Car() {
+
+    public static class Key {
+        private boolean startEngineRemote;
+        private boolean keylessEntry;
+
+        public Key(boolean startEngineRemote, boolean keylessEntry) {
+            this.startEngineRemote = startEngineRemote;
+            this.keylessEntry = keylessEntry;
+        }
+
+        public boolean isStartEngineRemote() {
+            return startEngineRemote;
+        }
+
+        public boolean isKeylessEntry() {
+            return keylessEntry;
+        }
     }
 
-    public Car(float engineVolume, String color, int productionYear) {
-        this.engineVolume = engineVolume;
-        this.color = color;
-        this.productionYear = productionYear;
-        this.brand = def;
-        this.model = def;
-        this.productionCountry = def;
+    public  static class  Insurance {
+        private final LocalDate validity;
+        private final double price;
+        private final String number;
+
+        public Insurance(LocalDate validity, double price, String number) {
+            this.validity = validity;
+            if (validity.isBefore(LocalDate.now())){
+                System.out.println("Страховка просрочена! Срочно оформите новую страховку!!!");
+            }
+            this.price = price;
+            if (number.length() != 9) {
+                System.out.println("Номер страховки некорректный!");
+            }
+            this.number = number;
+        }
+
+        public LocalDate getValidity() {
+            return validity;
+        }
+
+        public double getPrice() {
+            return price;
+        }
+
+        public String getNumber() {
+            return number;
+        }
+    }
+    Car() {
     }
 
     public Car(String brand, String model, Float engineVolume, String color, Integer productionYear,
@@ -109,10 +150,32 @@ public class Car {
         this.winterTires = winterTires;
     }
 
+    public Key getKey() {
+        return key;
+    }
+
+    public void setKey(Key key) {
+        if (key == null) {
+            this.key = key;
+        }
+    }
+
     public void printInformation() {
         System.out.println("Бренд автомобиля - " + brand + ", марка автомобиля - " + model + " " + productionYear
                 + " года выпуска, собран в "
                 + productionCountry + ", цвет автомобиля - " + color + ", объем двигателя - " + engineVolume
-                + "л." );
+                + "л.");
+    }
+
+    public void changeTire() {
+        this.winterTires = !winterTires;
+    }
+
+    public void checkNumberRegistration(boolean winterTires) {
+        if (numberRegistration.matches("[A-Z]\\d\\d\\d[A-Z][A-Z]\\d\\d\\d")) {
+            this.numberRegistration = numberRegistration;
+        } else {
+            this.numberRegistration = "Указан неверный регистрационный номер!";
+        }
     }
 }
